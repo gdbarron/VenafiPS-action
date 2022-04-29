@@ -8,4 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: gdbarron/VenafiPS-action@main
-
+        with:
+          token: ${{ secrets.VENAFI_TOKEN }}
