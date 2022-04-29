@@ -1,12 +1,18 @@
 name: 'Container Action Template'
 description: 'Get started with Container actions'
 author: 'Greg Brownstein'
-inputs: 
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+inputs:
+  token:
+    description:
+    required: true
+  server:
+    description:
+    required: false
+  commands:
+    description:
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.myInput }}
+#   args:
+#     - ${{ inputs.myInput }}
