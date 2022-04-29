@@ -1,3 +1,4 @@
 gci env:
 
-install-module VenafiPS
+Set-PSRepository PSGallery -InstallationPolicy Trusted
+Install-Module VenafiPS -ErrorAction Stop
