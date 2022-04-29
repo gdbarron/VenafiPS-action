@@ -1,15 +1,15 @@
-name: 'Container Action Template'
-description: 'Get started with Container actions'
+name: 'VenafiPS'
+description: 'Execute commands from VenafiPS Powershell module'
 author: 'Greg Brownstein'
 inputs:
   token:
-    description:
+    description: TPP token or VaaS key
     required: true
   server:
-    description:
+    description: TPP server name.  Not required for VaaS.
     required: false
   commands:
-    description:
+    description: Module commands to execute
     required: true
 runs:
   using: 'docker'
