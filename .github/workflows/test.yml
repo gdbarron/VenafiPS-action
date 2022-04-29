@@ -12,6 +12,4 @@ jobs:
           token: ${{ secrets.VENAFI_TOKEN }}
           server: gdb-tpp.se.venafi.com
           commands: |
-            get-module venafips -listavailable
-            get-command -module venafips
             find-venaficertificate -first 5
