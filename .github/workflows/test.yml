@@ -14,4 +14,4 @@ jobs:
           commands: |
             get-module venafips -listavailable
             get-command -module venafips
-          
+            find-venaficertificate -first 5
