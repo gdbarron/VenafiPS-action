@@ -2,14 +2,21 @@ name: test
 
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   test-action:
     runs-on: ubuntu-latest
     steps:
       - uses: gdbarron/VenafiPS-action@main
+        id: get-certs
         with:
           token: ${{ secrets.VENAFI_TOKEN }}
-          server: gdb-tpp.se.venafi.com
+          tpp_server: ${{ secrets.VENAFI_SERVER }}
           commands: |
             find-venaficertificate -first 5
+            $action_out = find-venaficertificate -first 5 | ConvertTo-Json -Depth 5 -Compress
+      - name: test output
+        shell: pwsh
+        run: |
+          '${{ steps.get-certs.outputs.action_out}}' | ConvertFrom-Json

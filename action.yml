@@ -1,16 +1,22 @@
 name: 'VenafiPS'
-description: 'Execute commands from VenafiPS Powershell module'
+description: 'Execute commands from VenafiPS Powershell module, https://github.com/Venafi/VenafiPS'
 author: 'Greg Brownstein'
 inputs:
   token:
     description: TPP token or VaaS key
     required: true
-  server:
+  tpp_server:
     description: TPP server name.  Not required for VaaS.
     required: false
   commands:
     description: Module commands to execute
     required: true
+output:
+  action_out:
+  description: 'Output from action to be used further in the pipeline'
 runs:
   using: 'docker'
   image: 'Dockerfile'
+branding:
+  icon: terminal
+  color: orange
