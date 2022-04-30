@@ -10,7 +10,7 @@ jobs:
       - uses: gdbarron/VenafiPS-action@20220430
         with:
           token: ${{ secrets.VENAFI_TOKEN }}
-          server: gdb-tpp.se.venafi.com
+          tpp_server: gdb-tpp.se.venafi.com
           commands: |
             find-venaficertificate -first 5
             $action_out = find-venaficertificate -first 5 | ConvertTo-Json
