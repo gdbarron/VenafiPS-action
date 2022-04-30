@@ -18,5 +18,7 @@ jobs:
             $action_out = find-venaficertificate -first 5 | ConvertTo-Json
       - uses: gdbarron/VenafiPS-action@20220430
         with:
+          token: ${{ secrets.VENAFI_TOKEN }}
+          tpp_server: gdb-tpp.se.venafi.com
           commands: |
             write-output ${{ steps.get-certs.outputs.action_out}}
