@@ -6,6 +6,10 @@ Install-Module VenafiPS -ErrorAction Stop
 
 $objectGuid = [System.Guid]::empty
 
+if ( -not $token ) {
+  throw "'token' parameter not provided"
+}
+
 if ( [System.Guid]::TryParse($token, [System.Management.Automation.PSReference]$objectGuid) ) {
 
   Write-Output 'Token is VaaS key'
@@ -14,6 +18,11 @@ if ( [System.Guid]::TryParse($token, [System.Management.Automation.PSReference]$
 else {
 
   Write-Output 'Token is TPP token'
+  
+  if ( -not $server ) {
+    throw "'server' parameter is required when connecting to TPP"
+  }
+  
   New-VenafiSession -Server $server -AccessToken (New-Object System.Management.Automation.PSCredential('AccessToken', ($token | ConvertTo-SecureString -AsPlainText -Force)))
 }
 
