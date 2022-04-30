@@ -16,7 +16,7 @@ jobs:
         uses: gdbarron/venafips-action@main
         with:
           token: ${{ secrets.VENAFI_TOKEN }}
-          server: server.company.com
+          server: ${{ secrets.VENAFI_SERVER }}
           commands: |
             Find-VenafiCertificate -First 5 | Invoke-VenafiCertificateAction -Renew
             $action_out = '' # set this variable to use in another step

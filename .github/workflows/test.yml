@@ -12,7 +12,7 @@ jobs:
         id: get-certs
         with:
           token: ${{ secrets.VENAFI_TOKEN }}
-          tpp_server: gdb-tpp.se.venafi.com
+          tpp_server: ${{ secrets.VENAFI_SERVER }}
           commands: |
             find-venaficertificate -first 5
             $action_out = find-venaficertificate -first 5 | ConvertTo-Json -Depth 5 -Compress
