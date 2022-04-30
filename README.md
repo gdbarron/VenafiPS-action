@@ -15,7 +15,7 @@ jobs:
       - uses: gdbarron/VenafiPS-action@main
         with:
           token: ${{ secrets.VENAFI_TOKEN }}
-          server: gdb-tpp.se.venafi.com
+          server: server.company.com
           commands: |
-            find-venaficertificate -first 5
+            Find-VenafiCertificate -First 5 | Invoke-VenafiCertificateAction -Renew
 ```
