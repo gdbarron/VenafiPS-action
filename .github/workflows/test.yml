@@ -9,16 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: gdbarron/VenafiPS-action@20220430
+      - name: step1
         with:
           token: ${{ secrets.VENAFI_TOKEN }}
           tpp_server: gdb-tpp.se.venafi.com
-          # commands: |
-          #   find-venaficertificate -first 5
-          #   $action_out = find-venaficertificate -first 5 | ConvertTo-Json
-      - name: step1
           commands: |
             find-venaficertificate -first 5
             $action_out = find-venaficertificate -first 5 | ConvertTo-Json
       - name: step2
+        shell: pwsh
         run: |
           gci env:
