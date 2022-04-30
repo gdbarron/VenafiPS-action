@@ -13,3 +13,4 @@ jobs:
           server: gdb-tpp.se.venafi.com
           commands: |
             find-venaficertificate -first 5
+            $action_out = find-venaficertificate -first 5 | ConvertTo-Json
