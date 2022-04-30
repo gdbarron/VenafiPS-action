@@ -9,13 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: gdbarron/VenafiPS-action@20220430
+        id: get-certs
         with:
           token: ${{ secrets.VENAFI_TOKEN }}
           tpp_server: gdb-tpp.se.venafi.com
           commands: |
             find-venaficertificate -first 5
             $action_out = find-venaficertificate -first 5 | ConvertTo-Json
-      - name: step2
-        shell: pwsh
-        run: |
-          gci env:
+      - uses: gdbarron/VenafiPS-action@20220430
+        with:
+          commands: |
+            write-output ${{ steps.get-certs.outputs.action_out}}
