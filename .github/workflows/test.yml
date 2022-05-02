@@ -5,10 +5,10 @@ on:
   push:
 
 jobs:
-  test-action:
+  test-linux:
     runs-on: ubuntu-latest
     steps:
-      - uses: gdbarron/VenafiPS-action@main
+      - uses: gdbarron/venafips-action@main
         id: get-certs
         with:
           token: ${{ secrets.VENAFI_TOKEN }}
@@ -20,3 +20,12 @@ jobs:
         shell: pwsh
         run: |
           '${{ steps.get-certs.outputs.action_out}}' | ConvertFrom-Json
+  test-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: gdbarron/venafips-action@main
+        with:
+          token: ${{ secrets.VENAFI_TOKEN }}
+          tpp_server: ${{ secrets.VENAFI_SERVER }}
+          commands: |
+            find-venaficertificate -first 5
