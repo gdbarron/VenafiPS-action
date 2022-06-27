@@ -16,7 +16,11 @@ outputs:
     description: 'Output from action to be used further in the workflow'
 runs:
   using: 'docker'
-  image: 'docker://venafi/venafips-module:latest'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.TPP_SERVER }}
+    - ${{ inputs.TPP_TOKEN }}
+    - ${{ inputs.VAAS_KEY }}
 branding:
   icon: terminal
   color: orange
