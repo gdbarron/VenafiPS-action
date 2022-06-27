@@ -14,6 +14,7 @@ jobs:
           TPP_SERVER: ${{ secrets.VENAFI_SERVER }}
 
       - name: get certs
+        shell: pwsh
         id: get-certs
         run: |
             find-venaficertificate -first 5
@@ -21,6 +22,6 @@ jobs:
             Write-Output "::set-output name=action_out::$action_out"
 
       - name: test output
-        # shell: pwsh
+        shell: pwsh
         run: |
           '${{ steps.get-certs.outputs.action_out}}' | ConvertFrom-Json
