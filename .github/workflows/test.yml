@@ -17,6 +17,7 @@ jobs:
           tpp_server: ${{ secrets.VENAFI_SERVER }}
           commands: |
             gci env:
+            gci /root/.local/share/powershell/Modules
             get-module venafips -listavailable
             find-venaficertificate -first 5
             $action_out = find-venaficertificate -first 5 | ConvertTo-Json -Depth 5 -Compress
