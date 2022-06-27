@@ -17,6 +17,7 @@ jobs:
         shell: pwsh
         id: get-certs
         run: |
+            get-module venafips -listavailable
             find-venaficertificate -first 5
             $action_out = find-venaficertificate -first 5 | ConvertTo-Json -Depth 5 -Compress
             Write-Output "::set-output name=action_out::$action_out"
