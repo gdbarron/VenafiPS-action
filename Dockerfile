@@ -1,3 +1,7 @@
 FROM venafi/venafips-module:latest
 
 SHELL ["pwsh"]
+
+ENV TPP_SERVER=${INPUT_TPP_SERVER}
+ENV TPP_TOKEN=${INPUT_TPP_TOKEN}
+ENV VAAS_KEY=${INPUT_VAAS_KEY}
