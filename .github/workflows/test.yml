@@ -8,14 +8,15 @@ jobs:
   test-action:
     runs-on: ubuntu-latest
     steps:
-      - uses: gdbarron/VenafiPS-action@main
+      - uses: gdbarron/venafips-action@use-new-image
         id: get-certs
         with:
-          token: ${{ secrets.VENAFI_TOKEN }}
-          tpp_server: ${{ secrets.VENAFI_SERVER }}
-          commands: |
+          TPP_TOKEN: ${{ secrets.VENAFI_TOKEN }}
+          TPP_SERVER: ${{ secrets.VENAFI_SERVER }}
+        run: |
             find-venaficertificate -first 5
             $action_out = find-venaficertificate -first 5 | ConvertTo-Json -Depth 5 -Compress
+            Write-Output "::set-output name=action_out::$action_out"
       - name: test output
         shell: pwsh
         run: |
