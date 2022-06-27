@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: gdbarron/venafips-action@use-new-image
-        name: get certs
+      - name: get certs
         id: get-certs
         with:
           TPP_TOKEN: ${{ secrets.VENAFI_TOKEN }}
