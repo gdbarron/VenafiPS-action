@@ -1,16 +1,16 @@
 name: 'VenafiPS'
-description: 'Execute commands from VenafiPS Powershell module, https://github.com/Venafi/VenafiPS'
+description: 'Automate against Venafi Trust Protection Platform and Venafi as a Service with the VenafiPS Powershell module, https://github.com/Venafi/VenafiPS'
 author: 'Greg Brownstein'
 inputs:
-  token:
-    description: TPP token or VaaS key
-    required: true
-  tpp_server:
-    description: TPP server name.  Not required for VaaS.
+  TPP_TOKEN:
+    description: TPP token
     required: false
-  commands:
-    description: Module commands to execute
-    required: true
+  TPP_SERVER:
+    description: TPP server name
+    required: false
+  VAAS_KEY:
+    description: VaaS key
+    required: false
 output:
   action_out:
   description: 'Output from action to be used further in the pipeline'
