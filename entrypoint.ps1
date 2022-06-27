@@ -27,11 +27,12 @@
 # }
 
 
-# Invoke-Expression $env:INPUT_COMMANDS
 
 $env:TPP_SERVER = $args[0]
 $env:TPP_TOKEN = $args[1]
 $env:VAAS_KEY = $args[2]
+
+Invoke-Expression $env:INPUT_COMMANDS
 
 if ( $action_out ) {
   Write-Output "::set-output name=action_out::$action_out"

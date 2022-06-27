@@ -8,15 +8,14 @@ jobs:
   test-action:
     runs-on: ubuntu-latest
     steps:
-      - uses: gdbarron/venafips-action@use-new-image
-        with:
-          TPP_TOKEN: ${{ secrets.VENAFI_TOKEN }}
-          TPP_SERVER: ${{ secrets.VENAFI_SERVER }}
-
       - name: get certs
-        shell: pwsh
+        uses: gdbarron/venafips-action@use-new-image
+        # shell: pwsh
         id: get-certs
-        run: |
+        with:
+          tpp_token: ${{ secrets.VENAFI_TOKEN }}
+          tpp_server: ${{ secrets.VENAFI_SERVER }}
+          commands: |
             gci env:
             get-module venafips -listavailable
             find-venaficertificate -first 5
