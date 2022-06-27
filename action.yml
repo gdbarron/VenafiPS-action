@@ -16,7 +16,7 @@ outputs:
     description: 'Output from action to be used further in the workflow'
 runs:
   using: 'docker'
-  image: 'venafi/venafips-module:latest'
+  image: 'docker://venafi/venafips-module:latest'
 branding:
   icon: terminal
   color: orange
