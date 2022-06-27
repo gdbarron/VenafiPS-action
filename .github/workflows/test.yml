@@ -9,16 +9,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: gdbarron/venafips-action@use-new-image
-      - name: get certs
-        id: get-certs
         with:
           TPP_TOKEN: ${{ secrets.VENAFI_TOKEN }}
           TPP_SERVER: ${{ secrets.VENAFI_SERVER }}
+
+      - name: get certs
+        id: get-certs
         run: |
             find-venaficertificate -first 5
             $action_out = find-venaficertificate -first 5 | ConvertTo-Json -Depth 5 -Compress
             Write-Output "::set-output name=action_out::$action_out"
+
       - name: test output
-        shell: pwsh
+        # shell: pwsh
         run: |
           '${{ steps.get-certs.outputs.action_out}}' | ConvertFrom-Json
