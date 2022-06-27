@@ -11,12 +11,12 @@ inputs:
   VAAS_KEY:
     description: VaaS key
     required: false
-output:
+outputs:
   action_out:
-  description: 'Output from action to be used further in the pipeline'
+    description: 'Output from action to be used further in the workflow'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'venafi/venafips-module:latest'
 branding:
   icon: terminal
   color: orange
